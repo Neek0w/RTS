@@ -16,3 +16,7 @@ pratique.
 
 ✔ Les résultats peuvent être documentés grâce à des pages Web voire mis
 à disposition des utilisateurs directement dans des navigateurs Web.
+
+Schéma UML du projet :
+
+![Sae23](https://user-images.githubusercontent.com/45294301/164045328-bc566d6b-2320-4c67-bbb1-1ed25166be54.jpg)
