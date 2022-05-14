@@ -19,4 +19,4 @@ pratique.
 
 Schéma UML du projet :
 
-![Sae23v2](https://user-images.githubusercontent.com/45294301/168286537-d24930a3-190a-4163-b622-8050fec7334a.jpg)
+![Sae23](https://user-images.githubusercontent.com/45294301/168439843-fbb2cba2-2bfe-49ab-bf28-70bbdc302c82.jpg)
