@@ -1,0 +1,6 @@
+docker pull mysql
+
+sudo docker run --name mysql_but -e MYSQL_ROOT_PASSWORD=rtpass -d mysql:latest
+
+docker exec -i mysql_but mysql -uroot -prtspass rts < sae.sql
+
