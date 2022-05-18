@@ -7,9 +7,12 @@ docker exec -i mysql_but mysql -uroot -prtspass rts < sae.sql
 ##Psql
 docker run --name psql_but -p 5432:5432 -e POSTGRES_PASSWORD=rtpass -d postgres
 docker cp ./sae.sql psql_but:sae.sql
-docker exec -it psql_but
+docker exec -it psql_but bash
+#importe ton sql
+docker cp ./sae.sql psql_but:sae.sql
 docker exec -u postgres psql_but psql -U rtsuser -d rtsuser_bd -f sae.sql
-
+#se connecter à sa base 
+docker exec -u postgres psql_but psql -U rtsuser -d rtsuser_bd -W
 
 ##Requête psql:
 createuser rtsuser
@@ -22,7 +25,7 @@ CREATE USER rtsuser WITH PASSWORD 'rts' CREATEDB;
 // CREATE ROLE rtsuser WITH CREATEDB;
 CREATE DATABASE rtsuser_bd OWNER rtsuser;
 
-/# psql -U rtsuser_bd -W
+/# psql -U rtsuser -d rtsuser_bd -W
 "rts"
 
 
