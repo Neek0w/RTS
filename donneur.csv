@@ -1,0 +1,31 @@
+nom,prenom,age,adresse,numTel,groupeSanguin,maladie
+Berthier,Julien,20,15 rue du champion 75100,0789351676,A+,FALSE
+Sarrazin,Marius,25,8 rue de la Muscu 69500,0678451367,O-,FALSE
+Chenoll,Lohen,20,9 rue du chauffer 33140,0798123456,O+,FALSE
+Dautriat,Antonin,18,65 rue du cailloux 17450,0634561389,B-,FALSE
+Moreau,Santoine,35,3 avenue teams 30400,0678241567,A-,TRUE
+Moulard,Antoine,54,90 rue sql 13500,0784645753,AB+,FALSE
+Vallee,Julien,98,1 rue de la prairie 15600,0678342513,O-,TRUE
+Smith,Jhon,25,98 rue de l’ordinateur 12100,0789453786,A+,FALSE
+Lela,Erisa,18,168 rue tirana 65000,0684425632,O-,FALSE
+Bouquet,Carolle,69,87 rue bois de boulogne 78000,0689345623,AB+,FALSE
+Egloff,Nicolas,19,25 avenue marillac 34000,0789654565,B+,FALSE
+Pansivy,Camille,3 rue Victor Hugo Concarneau 23400,0745653423, O+ ,FALSE
+Delvaux,Anais,53 place Maurice-Charretier 12450,0678987654, B- ,FALSE
+Stains,Axel,77 Rue St Ferréol 13000,0768324556,B+,FALSE
+Pichet,Arthur,31 rue des Lacs 65000,0678657654,B-,TRUE
+Merca,Evan,32 rue Petite Fusterie 50140,0789098734,A-,FALSE
+Sabatier,Clara,38 Rue Bonnet 34900,0634828925,O+,FALSE
+Toupin,Emma,91 rue du Château 15300,0783156734,AB-,FALSE
+Tarret,Charlotte,27 rue Clement Marot 75900,0625621465,B-,TRUE
+Cebeaux,Adrien,32 Chemin Du Lavarin Sud 15900,0678452323,O-,FALSE
+Mercier,Celia,98 boulevard Aristide Briand 72000,0678546784,A-,FALSE
+Robie,Eva,33 Place du Jeu de Paume 19450,0698764917,A+,FALSE
+Lemagnant,Louise,18 rue Petite Fusterie 34620,0683565645,B-,FALSE
+Moreau,Antoine,22 rue de la Hulotais 17340,0682315628,O-,T
+Sandler,Adam,48 boulevard de Prague 21630,0735678536,A+,FALSE
+Torlet,Alexandre,2 rue Reine Elisabeth 47000,0798351567,AB-,TRUE
+Gimet,Ambre,20 rue Clement Marot 23840,0678456524,O-,FALSE
+Talon,Baptiste,53 rue Sadi Carnot 18130,0678345462,O-,FALSE
+Bertrand,Clemence,99 rue de Raymond Poincaré 33000,0789356783,O-,FALSE
+Parnedaud,Enzo,31 Rue de Verdun 33140,0678845623,O+,FALSE
