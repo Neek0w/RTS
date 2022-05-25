@@ -42,16 +42,6 @@ CREATE TABLE Hopital (
     telFixeHop VARCHAR(50)
 );
 
-CREATE TABLE Receveur (
-    id SERIAL PRIMARY KEY,
-    nom VARCHAR(50),
-    prenom VARCHAR(50),
-    age INTEGER,
-    adresse VARCHAR(50),
-    numTel VARCHAR(50),
-    groupeSanguin VARCHAR(50)
-);
-
 CREATE TABLE TypeSang (
     id SERIAL PRIMARY KEY,
     typesang VARCHAR(50)
@@ -60,6 +50,17 @@ CREATE TABLE TypeSang (
 CREATE TABLE Prix (
     id SERIAL PRIMARY KEY,
     prix FLOAT
+);
+
+CREATE TABLE Receveur (
+    id SERIAL PRIMARY KEY,
+    nom VARCHAR(50),
+    prenom VARCHAR(50),
+    age INTEGER,
+    adresse VARCHAR(50),
+    numTel VARCHAR(50),
+    groupeSanguin VARCHAR(50),
+    typesang INTEGER REFERENCES TypeSang 
 );
 
 CREATE TABLE PocheDisponible (
