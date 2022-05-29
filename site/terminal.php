@@ -7,7 +7,11 @@ if(isset($_POST["req"])) {
     $info2=$connexion->query($requete);
     $res=$info2->fetchALL(PDO::FETCH_ASSOC);
 
-    print_r($res);
+    $requeteSimple = $_POST["req"];
+    $info3=$connexion->query($requeteSimple);
+    $resSimple=$info3->fetch(PDO::FETCH_ASSOC);
+
+
 }
 
 
@@ -16,7 +20,7 @@ if(isset($_POST["req"])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TP noté Php</title>
+    <title>SAE 2.03</title>
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -47,13 +51,13 @@ if(isset($_POST["req"])) {
             </form>
 
             <table border="1">
-                <?php foreach ($res as $key => $value) : ?>
-                    <tr>
-                        <?php foreach($value as $k=>$v): ?>
-                            <th><?=$k?></th>
-                        <?php endforeach; ?>
-                    </tr>
+                <tr>
+                <?php foreach ($resSimple as $key => $value) : ?>
+                        <th><?=$key?></th>
+
                 <?php endforeach; ?>
+                </tr>
+
 
                 <?php foreach ($res as $key => $value) : ?>
                     <tr>
