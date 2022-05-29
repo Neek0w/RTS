@@ -15,6 +15,12 @@ WHERE Donneur.groupeSanguin = (
 SELECT sum(Receveur.age)/count(*) as age_moyen 
 FROM Receveur;
 
+--indique le prix la poche portant tel numero (idpoche)
+SELECT PocheDisponible.id as numero_poche ,Prix.prix as prix
+FROM PocheDisponible
+JOIN Prix on Prix.id = PocheDisponible.idprix
+WHERE PocheDisponible.id = 25 ;
+
 --age moyen donneurs
 SELECT sum(Donneur.age)/count(*) as age_moyen 
 FROM Donneur;
@@ -64,13 +70,38 @@ JOIN Hopital_Receveur on Hopital_Receveur.id_Hopital = Hopital.id
 JOIN Receveur on Receveur.id = Hopital_Receveur.id_Receveur
 WHERE Receveur.nom = 'Maggie' and Receveur.prenom = 'Francois';
 
---poche compatible avec tel receveur (nom ,prenom)
+--poche compatible avec tel receveur (type de sang, nom ,prenom)
 SELECT PocheDisponible.id as num_Poche ,TypeSang.typesang as type_sang
 FROM PocheDisponible
 JOIN TypeSang on TypeSang.id = PocheDisponible.idTypeSang
 JOIN Donneur on Donneur.id = PocheDisponible.idDonneur
-WHERE TypeSang.typesang = 'plasma' 
+WHERE TypeSang.typesang = 'plaquettes' 
 AND Donneur.groupeSanguin = (
     SELECT Receveur.groupeSanguin 
     FROM Receveur 
     WHERE Receveur.nom = 'Celina' and Receveur.prenom = 'Barre' );
+
+--prix pour tel poches de sang (type, groupe sanguin)
+SELECT PocheDisponible.id as numero_poche ,Prix.prix as prix
+FROM PocheDisponible
+JOIN Prix on Prix.id = PocheDisponible.idprix
+JOIN TypeSang on TypeSang.id = PocheDisponible.idTypeSang
+JOIN Donneur on Donneur.id = PocheDisponible.idDonneur
+WHERE TypeSang.typesang = 'plasma' AND Donneur.groupeSanguin = 'O-';
+
+--saisie de nom et prenom d'un demandeur et renvoie toute les infos sur les poches possibles (nom, prenom)
+SELECT PocheDisponible.id as numero_poche ,PocheDisponible.dateperemption as date_peremption, Prix.prix as prix
+FROM PocheDisponible
+JOIN Prix on Prix.id = PocheDisponible.idprix
+JOIN TypeSang on TypeSang.id = PocheDisponible.idTypeSang
+JOIN Donneur on Donneur.id = PocheDisponible.idDonneur
+WHERE Donneur.groupeSanguin = (
+    SELECT Receveur.groupeSanguin 
+    FROM Receveur 
+    WHERE Receveur.nom = 'Adrien' and Receveur.prenom = 'Robin' )
+AND
+TypeSang.typesang = (
+    SELECT TypeSang.typesang 
+    FROM TypeSang
+    JOIN Receveur on Receveur.typesang = TypeSang.id
+WHERE Receveur.nom = 'Adrien' and Receveur.prenom = 'Robin' );
