@@ -1,11 +1,3 @@
-<?php 
-include("connexion.php");
-$sql= 'SELECT musiciens.nom,musiciens.prenom,instruments.nom as instru FROM instruments,musiciens WHERE musiciens.instrument = instruments.num';
-$result=$connexion->query($sql);
-$musiciens=$result->fetchall(PDO::FETCH_ASSOC);
-?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
