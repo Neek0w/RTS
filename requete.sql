@@ -1,9 +1,9 @@
---obtenir nom prenom et numero de telephone d'une persoone avec tel type de sang (type de sang)
+--obtenir nom prenom et numero de telephone d'une persoone avec tel groupe sanguin (groupe sanguin)
 SELECT Donneur.numTel as telephone ,Donneur.nom as nom ,Donneur.prenom as prenom
 FROM Donneur          
 WHERE Donneur.groupeSanguin = 'O-' ;
 
---obtenir nom prenom et numero de telephone d'une persoone avec tel personne (nom,prenom)
+--obtenir nom prenom et numero de telephone d'une personne du meme groupe sanguin que tel personne (nom,prenom)
 SELECT Donneur.numTel as telephone ,Donneur.nom as nom ,Donneur.prenom as prenom
 FROM Donneur          
 WHERE Donneur.groupeSanguin = (
@@ -32,7 +32,7 @@ JOIN Donneur on Donneur.id = PocheDisponible.idDonneur
 WHERE groupeSanguin = 'A+';
 
 --nombre de poche non valider par tel laboratoire (nom du laboratoire)
-select count(*) as nbr_poche_malade
+SELECT count(*) as nbr_poche_malade
 FROM PocheDisponible
 JOIN Laboratoire on Laboratoire.id = PocheDisponible.idLab
 WHERE PocheDisponible.valider = 'FALSE' and Laboratoire.nom = 'Laboratoire du Nguyen';
@@ -44,15 +44,33 @@ JOIN PocheDisponible on PocheDisponible.idDonneur = Donneur.id
 WHERE valider = 'FALSE';
 
 --nombre de poche de tel sang que tel centre a recolter (grp sanguin ,nom du centre)
-SELECT count(*)
+SELECT count(*) as nbr_poches
 FROM PocheDisponible 
 JOIN Donneur on PocheDisponible.idDonneur = Donneur.id
 JOIN CentreDeCollecte on PocheDisponible.idCentre = CentreDeCollecte.id
 WHERE CentreDeCollecte.nom = 'Centre Louis Pasteur';
 
---nom prenom et telephone d'un donneur compatible 
-SELECT Count(*)
+--nombre de demandeur de tel poches (type de sang ,groupe sanguin)
+SELECT Count(*) as nbr_demandeur
 FROM Receveur
 JOIN TypeSang on TypeSang.id = Receveur.typesang
 JOIN PocheDisponible on PocheDisponible.id = Receveur.typesang
-WHERE Receveur.groupeSanguin = 'B-';
+WHERE Receveur.groupeSanguin = 'B-' and TypeSang.typesang = 'globulesrouges';
+
+--Hopital de tel receveur (nom ,prenom)
+SELECT Hopital.nom as nom ,Hopital.adresse as adresse ,Hopital.telFixeHop as telephone
+FROM Hopital
+JOIN Hopital_Receveur on Hopital_Receveur.id_Hopital = Hopital.id
+JOIN Receveur on Receveur.id = Hopital_Receveur.id_Receveur
+WHERE Receveur.nom = 'Maggie' and Receveur.prenom = 'Francois';
+
+--poche compatible avec tel receveur (nom ,prenom)
+SELECT PocheDisponible.id as num_Poche ,TypeSang.typesang as type_sang
+FROM PocheDisponible
+JOIN TypeSang on TypeSang.id = PocheDisponible.idTypeSang
+JOIN Donneur on Donneur.id = PocheDisponible.idDonneur
+WHERE TypeSang.typesang = 'plasma' 
+AND Donneur.groupeSanguin = (
+    SELECT Receveur.groupeSanguin 
+    FROM Receveur 
+    WHERE Receveur.nom = 'Celina' and Receveur.prenom = 'Barre' );
